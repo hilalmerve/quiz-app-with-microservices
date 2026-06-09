@@ -1,0 +1,108 @@
+version: '3.9'
+
+services:
+
+  eureka-server:
+    build: ./service-registry
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+
+  question-db:
+    image: postgres:15
+    container_name: question-db
+    environment:
+      POSTGRES_DB: questiondb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5433:5432"
+
+  question-service:
+    build: ./question-service
+    container_name: question-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - question-db
+      - eureka-server
+    volumes:
+      #      - .:/app
+      - maven-cache:/root/.m2
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://question-db:5432/questiondb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_DEVTOOLS_RESTART_ENABLED: "true"
+
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+
+
+  question-service-2:
+    build: ./question-service
+    container_name: question-service-2
+    ports:
+      - "8081:8080"
+    depends_on:
+      - question-db
+      - eureka-server
+    volumes:
+#      - .:/app
+      - maven-cache:/root/.m2
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://question-db:5432/questiondb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_DEVTOOLS_RESTART_ENABLED: "true"
+
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+
+  quiz-db:
+    image: postgres:15
+    container_name: quiz-db
+    environment:
+      POSTGRES_DB: quizdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5434:5432"
+
+  quiz-service:
+    build: ./quiz-service
+    container_name: quiz-service
+    ports:
+      - "8090:8080"
+    depends_on:
+      - quiz-db
+      - eureka-server
+    volumes:
+#      - .:/app
+      - maven-cache:/root/.m2
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://quiz-db:5432/quizdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_DEVTOOLS_RESTART_ENABLED: "true"
+
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    ports:
+      - "8765:8765"
+    depends_on:
+      - eureka-server
+    environment:
+      SPRING_APPLICATION_NAME: api-gateway
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+#      EUREKA_INSTANCE_PREFER_IP_ADDRESS: "true"
+
+volumes:
+  maven-cache:
