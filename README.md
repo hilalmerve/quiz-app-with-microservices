@@ -216,7 +216,7 @@ Each microservice owns its own PostgreSQL database, following the Database per S
 - Dockerization
 - Spring Cloud Ecosystem
 
-# 🔮 Future Improvements
+# 🌟 Future Improvements
 
 - 🤖 **AI-Powered Question Generation**
     - Integrate AI models to automatically generate quiz questions, answer choices, and difficulty levels based on user-defined topics.
@@ -246,7 +246,7 @@ Each microservice owns its own PostgreSQL database, following the Database per S
 GitHub Repository:
 [https://github.com/hilalmerve/quiz-app-with-microservices](https://github.com/hilalmerve/quiz-app-with-microservices)
 
-# 👩‍💻 Author
+# 💻 Author
 
 Hilal Merve
 
