@@ -184,25 +184,26 @@ All services can be started with a single Docker Compose command.
 
 ## Eureka Dashboard
 
-![Ekran Resmi 2026-06-17 17.47.47.png](Quiz%20App%20with%20Microservices/Ekran_Resmi_2026-06-17_17.47.47.png)
+![Eureka Dashboard](images/eureka-dashboard.png)
 
 ## Postman Tests
 
 The following Postman tests demonstrate the complete quiz lifecycle, including quiz creation, question retrieval, and result calculation through communication between microservices.
 
-![Ekran Resmi 2026-06-17 18.09.29.png](Quiz%20App%20with%20Microservices/Ekran_Resmi_2026-06-17_18.09.29.png)
+![Create Quiz](images/postman-create-quiz.png)
 
-![Ekran Resmi 2026-06-17 18.04.57.png](Quiz%20App%20with%20Microservices/Ekran_Resmi_2026-06-17_18.04.57.png)
+![Get Quiz Questions](images/postman-get-quiz.png)
 
-![Ekran Resmi 2026-06-17 18.10.54.png](Quiz%20App%20with%20Microservices/Ekran_Resmi_2026-06-17_18.10.54.png)
+![Submit Quiz](images/postman-submit-quiz.png)
+
 
 ## Docker Containers
 
-![Ekran Resmi 2026-06-17 17.51.49.png](Quiz%20App%20with%20Microservices/Ekran_Resmi_2026-06-17_17.51.49.png)
+![Docker Containers](images/docker-containers.png)
 
 ## Database Architecture
 
-![Ekran Resmi 2026-06-17 17.54.33.png](Quiz%20App%20with%20Microservices/c6c6544b-4538-4b4f-93ae-dfbd106dfc4d.png)
+![Database Architecture](images/database-architecture.png)
 
 Each microservice owns its own PostgreSQL database, following the Database per Service pattern.
 
