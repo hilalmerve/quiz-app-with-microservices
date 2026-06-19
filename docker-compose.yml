@@ -92,6 +92,12 @@ services:
 
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
 
+  ai-service:
+    build: ./ai-service
+    container_name: ai-service
+    ports:
+      - "8000:8000"
+
   api-gateway:
     build: ./api-gateway
     container_name: api-gateway
