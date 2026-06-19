@@ -13,8 +13,8 @@ services:
     container_name: question-db
     environment:
       POSTGRES_DB: questiondb
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1234
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5433:5432"
 
@@ -31,8 +31,8 @@ services:
       - maven-cache:/root/.m2
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://question-db:5432/questiondb
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
       SPRING_DEVTOOLS_RESTART_ENABLED: "true"
 
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
@@ -53,8 +53,8 @@ services:
       - maven-cache:/root/.m2
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://question-db:5432/questiondb
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
       SPRING_DEVTOOLS_RESTART_ENABLED: "true"
 
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
@@ -66,8 +66,8 @@ services:
     container_name: quiz-db
     environment:
       POSTGRES_DB: quizdb
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1234
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5434:5432"
 
@@ -84,13 +84,19 @@ services:
       - maven-cache:/root/.m2
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://quiz-db:5432/quizdb
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
       SPRING_DEVTOOLS_RESTART_ENABLED: "true"
 
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
 
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+
+  ai-service:
+    build: ./ai-service
+    container_name: ai-service
+    ports:
+      - "8000:8000"
 
   api-gateway:
     build: ./api-gateway
