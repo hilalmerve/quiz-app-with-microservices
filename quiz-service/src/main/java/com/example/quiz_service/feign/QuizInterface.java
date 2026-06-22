@@ -15,10 +15,10 @@ import java.util.List;
 @FeignClient("question-service")
 public interface QuizInterface {
     @GetMapping("question/generate")
-    public List<Integer> getQuestionsForQuiz(@RequestParam String categoryName, @RequestParam Integer numQuestions);
+    public List<Long> getQuestionsForQuiz(@RequestParam String categoryName, @RequestParam Integer numQuestions);
 
     @PostMapping("question/getQuestions")
-    public List<QuestionWrapper> getQuestionsFromId(@RequestBody List<Integer> questionIds);
+    public List<QuestionWrapper> getQuestionsFromId(@RequestBody List<Long> questionIds);
 
     @PostMapping("question/getScore")
     public Integer getScore(@RequestBody List<Response> responses);

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface QuestionRepository extends JpaRepository<Question, Integer> {
+public interface QuestionRepository extends JpaRepository<Question, Long> {
 
     List<Question> findByCategory(String category);
 
@@ -19,5 +19,5 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
     ORDER BY RANDOM() 
     LIMIT :numQ
     """, nativeQuery = true)
-    List<Integer> findRandomQuestionsByCategory(String category, int numQ);
+    List<Long> findRandomQuestionsByCategory(String category, int numQ);
 }

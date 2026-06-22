@@ -23,9 +23,9 @@ public class QuizService {
     @Autowired
     QuizInterface quizInterface;
 
-    public Integer createQuiz(String category, int numQ, String title) {
+    public Long createQuiz(String category, int numQ, String title) {
 
-        List<Integer> questions = quizInterface.getQuestionsForQuiz(category, numQ);
+        List<Long> questions = quizInterface.getQuestionsForQuiz(category, numQ);
         Quiz quiz = new Quiz();
         quiz.setTitle(title);
         quiz.setQuestionIds(questions);
@@ -34,9 +34,9 @@ public class QuizService {
         return quiz.getId();
     }
 
-    public List<QuestionWrapper> getQuizQuestions(Integer id) {
+    public List<QuestionWrapper> getQuizQuestions(Long id) {
         Quiz quiz = quizRepository.findById(id).get();
-        List<Integer> questionIds = quiz.getQuestionIds();
+        List<Long> questionIds = quiz.getQuestionIds();
         List<QuestionWrapper> questions = quizInterface.getQuestionsFromId(questionIds);
 
         return questions;
