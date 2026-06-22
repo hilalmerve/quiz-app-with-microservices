@@ -6,6 +6,6 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 public class Response {
-    private Integer id;
+    private Long id;
     private String response;
 }

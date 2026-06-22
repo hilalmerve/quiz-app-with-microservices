@@ -12,7 +12,7 @@ public class Quiz {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String title;
 
 //    @ElementCollection
@@ -21,5 +21,5 @@ public class Quiz {
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "quiz_questions", joinColumns = @JoinColumn(name = "quiz_id"))
     @OrderColumn(name = "list_order")
-    private List<Integer> questionIds = new ArrayList<>();
+    private List<Long> questionIds = new ArrayList<>();
 }

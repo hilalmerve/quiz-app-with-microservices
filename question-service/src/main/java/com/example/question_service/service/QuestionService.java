@@ -38,21 +38,21 @@ public class QuestionService {
 
     }
 
-    public Integer addQuestion(Question question) {
+    public Long addQuestion(Question question) {
         questionRepository.save(question);
         return question.getId();
     }
 
-    public List<Integer> getQuestionsForQuiz(String categoryName, Integer numQuestions) {
-        List<Integer> questions = questionRepository.findRandomQuestionsByCategory(categoryName, numQuestions);
+    public List<Long> getQuestionsForQuiz(String categoryName, Integer numQuestions) {
+        List<Long> questions = questionRepository.findRandomQuestionsByCategory(categoryName, numQuestions);
         return questions;
     }
 
-    public List<QuestionWrapper> getQuestionsFromId(List<Integer> questionIds) {
+    public List<QuestionWrapper> getQuestionsFromId(List<Long> questionIds) {
         List<QuestionWrapper> wrappers = new ArrayList<>();
         List<Question> questions = new ArrayList<>();
 
-        for(Integer id : questionIds) {
+        for(Long id : questionIds) {
             questions.add(questionRepository.findById(id).get());
         }
 
