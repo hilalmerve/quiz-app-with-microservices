@@ -1,8 +1,8 @@
 package com.example.quiz_service.service;
 
 import com.example.quiz_service.feign.AIClient;
-import com.example.quiz_service.model.dto.QuizGenerationRequest;
-import com.example.quiz_service.model.dto.QuizGenerationResponse;
+import com.example.quiz_service.dto.GenerationQuizRequest;
+import com.example.quiz_service.dto.GenerationQuizResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +12,13 @@ public class AIService {
 
     private final AIClient aiClient;
 
-    public QuizGenerationResponse generateQuestions(
+    public GenerationQuizResponse generateQuestions(
             String category,
             Integer count
     ) {
 
-        QuizGenerationRequest request =
-                new QuizGenerationRequest();
+        GenerationQuizRequest request =
+                new GenerationQuizRequest();
 
         request.setCategory(category);
         request.setQuestionCount(count);

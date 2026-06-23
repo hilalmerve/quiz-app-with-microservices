@@ -1,11 +1,9 @@
-package com.example.question_service.model;
+package com.example.quiz_service.dto;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-public class QuestionWrapper {
+public class QuestionResponse {
 
     private Long id;
     private String questionTitle;
@@ -14,7 +12,7 @@ public class QuestionWrapper {
     private String option3;
     private String option4;
 
-    public QuestionWrapper(Long id, String questionTitle, String option1, String option2, String option3, String option4) {
+    public QuestionResponse(Long id, String questionTitle, String option1, String option2, String option3, String option4) {
         this.id = id;
         this.questionTitle = questionTitle;
         this.option1 = option1;

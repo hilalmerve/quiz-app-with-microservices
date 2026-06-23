@@ -51,7 +51,7 @@ Service   Service
 
 ## 📚 Question Service
 
-Responsible for managing the question bank and evaluating quiz responses.
+Responsible for managing the question bank and evaluating quiz answerQuestionRequests.
 
 ### Features
 
@@ -178,7 +178,7 @@ All services can be started with a single Docker Compose command.
 2. API Gateway routes the request to Quiz Service.
 3. Quiz Service communicates with Question Service via OpenFeign.
 4. Question Service retrieves data from its database.
-5. The response is returned to the client through API Gateway.
+5. The answerQuestionRequest is returned to the client through API Gateway.
 
 # 📸 Screenshots
 

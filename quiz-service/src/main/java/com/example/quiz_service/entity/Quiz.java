@@ -1,4 +1,4 @@
-package com.example.quiz_service.model;
+package com.example.quiz_service.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

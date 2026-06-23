@@ -1,7 +1,7 @@
 package com.example.quiz_service.feign;
 
-import com.example.quiz_service.model.dto.QuizGenerationRequest;
-import com.example.quiz_service.model.dto.QuizGenerationResponse;
+import com.example.quiz_service.dto.GenerationQuizRequest;
+import com.example.quiz_service.dto.GenerationQuizResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface AIClient {
 
     @PostMapping("/generate-quiz")
-    QuizGenerationResponse generateQuiz(
-            @RequestBody QuizGenerationRequest request
+    GenerationQuizResponse generateQuiz(
+            @RequestBody GenerationQuizRequest request
     );
 }

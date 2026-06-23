@@ -1,8 +1,8 @@
 package com.example.question_service.controller;
 
-import com.example.question_service.model.Question;
-import com.example.question_service.model.QuestionWrapper;
-import com.example.question_service.model.Response;
+import com.example.question_service.entity.Question;
+import com.example.question_service.dto.QuestionResponse;
+import com.example.question_service.dto.AnswerQuestionRequest;
 import com.example.question_service.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,13 +39,13 @@ public class QuestionController {
     }
 
     @PostMapping("getQuestions")
-    public ResponseEntity<List<QuestionWrapper>> getQuestionsFromId(@RequestBody List<Long> questionIds) {
+    public ResponseEntity<List<QuestionResponse>> getQuestionsFromId(@RequestBody List<Long> questionIds) {
 
         return new ResponseEntity<>(questionService.getQuestionsFromId(questionIds), HttpStatus.OK);
     }
 
     @PostMapping("getScore")
-    public ResponseEntity<Integer> getScore(@RequestBody List<Response> responses) {
-        return new ResponseEntity<>(questionService.getScore(responses), HttpStatus.OK);
+    public ResponseEntity<Integer> getScore(@RequestBody List<AnswerQuestionRequest> answerQuestionRequests) {
+        return new ResponseEntity<>(questionService.getScore(answerQuestionRequests), HttpStatus.OK);
     }
 }

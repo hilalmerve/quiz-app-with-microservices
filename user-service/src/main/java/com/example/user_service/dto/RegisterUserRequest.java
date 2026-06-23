@@ -1,9 +1,9 @@
-package com.example.user_service.model.dto;
+package com.example.user_service.dto;
 
 import lombok.Data;
 
 @Data
-public class UserRegisterRequest {
+public class RegisterUserRequest {
 
     private String username;
     private String email;

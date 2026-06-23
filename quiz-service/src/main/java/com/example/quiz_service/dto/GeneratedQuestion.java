@@ -1,4 +1,4 @@
-package com.example.quiz_service.model.dto;
+package com.example.quiz_service.dto;
 
 import lombok.Data;
 
