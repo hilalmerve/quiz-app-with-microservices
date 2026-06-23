@@ -96,7 +96,7 @@ Return this format:
 """
 
     try:
-        response = client.models.generate_content(
+        answerQuestionRequest = client.models.generate_content(
             model="gemini-2.5-flash",
             contents=prompt,
             config={
@@ -104,12 +104,12 @@ Return this format:
             }
         )
 
-        response_text = response.text
+        response_text = answerQuestionRequest.text
 
         if not response_text:
             raise HTTPException(
                 status_code=500,
-                detail="Gemini returned empty response"
+                detail="Gemini returned empty answerQuestionRequest"
             )
 
         raw_response = response_text.strip()
@@ -136,7 +136,7 @@ Return this format:
     except json.JSONDecodeError:
         raise HTTPException(
             status_code=500,
-            detail="Failed to parse Gemini response as JSON"
+            detail="Failed to parse Gemini answerQuestionRequest as JSON"
         )
 
     except Exception as e:

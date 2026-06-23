@@ -1,8 +1,8 @@
 package com.example.user_service.service;
 
 import com.example.user_service.enums.Role;
-import com.example.user_service.model.entity.User;
-import com.example.user_service.model.dto.UserRegisterRequest;
+import com.example.user_service.entity.User;
+import com.example.user_service.dto.RegisterUserRequest;
 import com.example.user_service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,7 +17,7 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public Long createUser(UserRegisterRequest request) {
+    public Long createUser(RegisterUserRequest request) {
 
         if(userRepository.existsByUsername(request.getUsername())) {
             throw new RuntimeException("Username already exists");

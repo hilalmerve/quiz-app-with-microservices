@@ -1,9 +1,9 @@
-package com.example.quiz_service.model.dto;
+package com.example.quiz_service.dto;
 
 import lombok.Data;
 
 @Data
-public class QuizGenerationRequest {
+public class GenerationQuizRequest {
     private String category;
     private Integer questionCount;
 }

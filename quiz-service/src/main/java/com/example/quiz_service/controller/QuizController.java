@@ -1,8 +1,8 @@
 package com.example.quiz_service.controller;
 
-import com.example.quiz_service.model.dto.QuizDto;
-import com.example.quiz_service.model.QuestionWrapper;
-import com.example.quiz_service.model.Response;
+import com.example.quiz_service.dto.CreateQuizRequest;
+import com.example.quiz_service.dto.QuestionResponse;
+import com.example.quiz_service.dto.AnswerQuestionRequest;
 import com.example.quiz_service.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,17 +19,17 @@ public class QuizController {
     QuizService quizService;
 
     @PostMapping("create")
-    public ResponseEntity<Long> createQuiz(@RequestBody QuizDto quizDto) {
-        return new ResponseEntity<>(quizService.createQuiz(quizDto.getCategoryName(), quizDto.getNumQuestions(), quizDto.getTitle()), HttpStatus.CREATED);
+    public ResponseEntity<Long> createQuiz(@RequestBody CreateQuizRequest createQuizRequest) {
+        return new ResponseEntity<>(quizService.createQuiz(createQuizRequest.getCategoryName(), createQuizRequest.getNumQuestions(), createQuizRequest.getTitle()), HttpStatus.CREATED);
     }
 
     @GetMapping("get/{id}")
-    public ResponseEntity<List<QuestionWrapper>> getQuizQuestion(@PathVariable Long id) {
+    public ResponseEntity<List<QuestionResponse>> getQuizQuestion(@PathVariable Long id) {
         return new ResponseEntity<>(quizService.getQuizQuestions(id), HttpStatus.OK);
     }
 
     @PostMapping("submit/{id}")
-    public ResponseEntity<Integer> submitQuiz(@PathVariable Integer id, @RequestBody List<Response> responses) {
-        return new ResponseEntity<>(quizService.calculateResult(id, responses), HttpStatus.OK);
+    public ResponseEntity<Integer> submitQuiz(@PathVariable Integer id, @RequestBody List<AnswerQuestionRequest> answerQuestionRequests) {
+        return new ResponseEntity<>(quizService.calculateResult(id, answerQuestionRequests), HttpStatus.OK);
     }
 }

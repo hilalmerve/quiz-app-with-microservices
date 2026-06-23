@@ -1,11 +1,11 @@
-package com.example.quiz_service.model;
+package com.example.question_service.dto;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @Data
 @RequiredArgsConstructor
-public class Response {
+public class AnswerQuestionRequest {
     private Long id;
     private String response;
 }
